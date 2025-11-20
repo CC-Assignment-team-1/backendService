@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>DynamoDB Viewer</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>DynamoDB Table Viewer</h1>
+      <div class="controls">
+        <label>Limit:</label>
+        <input id="limit" type="number" min="1" placeholder="optional" />
+        <label>Filter key:</label>
+        <input id="key" placeholder="attribute name" />
+        <label>Filter value:</label>
+        <input id="value" placeholder="attribute value" />
+        <button id="load">Load</button>
+      </div>
+
+      <div id="status"></div>
+      <table id="results">
+        <thead id="thead"></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
