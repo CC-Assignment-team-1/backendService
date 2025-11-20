@@ -1,0 +1,14 @@
+[Unit]
+Description=Gunicorn instance to serve backendService
+After=network.target
+
+[Service]
+User=ec2-user
+Group=ec2-user
+WorkingDirectory=/opt/backendService
+Environment="PATH=/opt/backendService/.venv/bin"
+EnvironmentFile=/opt/backendService/.env
+ExecStart=/opt/backendService/.venv/bin/gunicorn --workers 2 --bind 127.0.0.1:8000 app:app
+
+[Install]
+WantedBy=multi-user.target

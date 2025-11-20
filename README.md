@@ -66,6 +66,18 @@ filtered Scan (slower but convenient for testing).
 - This sample uses `scan()` which can be expensive on large tables—use `query()` with a partition key and pagination for production-ready code.
 - For local testing without AWS, `localstack` can be used (not included here).
 
+## Deploying to EC2
+
+We include a `deploy/` folder with a cloud-init script and helper steps to run this app on
+an inexpensive EC2 instance (e.g., `t2.micro` or `t4g.micro`). See `deploy/README_DEPLOY.md`
+for step-by-step instructions and the `deploy/cloud-init.sh` and `deploy/ec2_launch.ps1` helpers.
+
+Quick test flow with CSV credentials (simple):
+
+- If you have an AWS credentials CSV containing `Access key ID` and `Secret access key`, you can use those by setting the credentials in the PowerShell helper `deploy/ec2_launch.ps1` before launching an instance. Set `$AwsAccessKey` and `$AwsSecret` in the script (example values) and run the script. It will embed the credentials into the cloud-init script so the instance writes them to `/opt/backendService/.env`, which `boto3` will use.
+
+This approach is intended for quick tests and demos only; storing credentials in user-data and instance files is insecure for long-term use. For production, prefer an IAM instance profile.
+
 ---
 
 If you'd like, I can also add unit tests, a Dockerfile, and CI config to run the app on pull requests. Let me know which extras you want next.

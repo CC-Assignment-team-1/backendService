@@ -9,3 +9,7 @@ instance/
 
 # VSCode
 .vscode/
+gcpAccessKey.json
+
+# Ignore GCP service account key
+*.json
