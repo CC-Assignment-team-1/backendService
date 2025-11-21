@@ -30,6 +30,10 @@ else
   sudo -u $APP_USER git -C $APP_DIR pull
 fi
 
+# Copy the .env file to the application directory
+sudo cp /opt/backendService/.env $APP_DIR/.env
+sudo chown $APP_USER:$APP_USER $APP_DIR/.env
+
 # Set up Python virtual environment and install dependencies
 sudo -u $APP_USER python3 -m venv $APP_DIR/.venv
 sudo -u $APP_USER $APP_DIR/.venv/bin/pip install --upgrade pip
